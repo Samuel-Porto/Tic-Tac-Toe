@@ -1,0 +1,119 @@
+.tictactoe {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.tictactoe h2 {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.reset_game, .reset_score {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    box-sizing: border-box;
+    color: var(--background);
+    font-size: 32px;
+    margin: 1rem;
+    padding: .25rem 1rem;
+    transition: all .2s;
+}
+.reset_score {
+    background: var(--red);
+}
+
+.reset_game:hover, .reset_score:hover {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transform: translateY(-4px);
+    box-shadow: 0 4px white;
+}
+.reset_score:hover {
+    border: 2px solid var(--red);
+    color: var(--red);
+
+    box-shadow: 0 4px var(--red);
+}
+
+.row {
+    display: flex;
+}
+
+.space {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 4px rgba(0, 0, 0, .1);
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    margin: .5rem;
+    transition: all .2s;
+    width: 200px;
+}
+.cross_space {
+    background: rgba(80, 203, 134, .75);
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.circle_space {
+    background: rgba(76, 116, 201, .75);
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.space:hover {
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.space:hover {
+    cursor: pointer;
+}
+
+.tictactoe img {
+    width: 100%;
+}
+
+.cross_score, .circle_score {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem;
+    font-size: 32px;
+    border-radius: .5rem;
+    width: 50px;
+    text-align: center;
+}
+
+.cross_score {
+    left: 0;
+    background: rgb(80, 203, 134);
+}
+.circle_score {
+    right: 0;
+    background: rgb(76, 116, 201);
+}
+
+@media screen and (max-width: 768px) {
+    .tictactoe h2 {
+        font-size: 48px;
+    }
+
+    .space {
+        border-radius: .5rem;
+        height: 20vw;
+        margin: .25rem;
+        width: 20vw;
+    }
+
+    .reset_game, .reset_score {
+        font-size: 16px;
+    }
+}
