@@ -9,11 +9,7 @@ let pieceToStart = "x";
 let piece = "x";
 
 function TicTacToe() {
-    const titleRef = useRef();
     let turn = 1
-
-    const [crossScore, setCrossScore] = useState(0);
-    const [circleScore, setCircleScore] = useState(0);
 
     const [stopGame, setStopGame] = useState(false);
     const [game, setGame] = useState([
@@ -38,7 +34,6 @@ function TicTacToe() {
             e.target.innerHTML = `<img src="${currentImg}" alt=${piece} />`;
             e.target.className = `${classes.space}  ${pieceClass}`;
             spacesUsed.push(e.target);
-            titleRef.current.innerHTML = `${nextPiece.toUpperCase()} turn`;
             
             let result = checkIfWin();
             if (result === true) {
@@ -84,21 +79,16 @@ function TicTacToe() {
 
     function win(piece) {
         let pieceName = piece === "x" ? "cross" : "circle";
-        titleRef.current.innerHTML = `${pieceName} win!`;
         if (piece === "x") {
-            setCrossScore(crossScore + 1);
             document.body.classList.add("green_theme");
         }
         if (piece === "o") {
-            setCircleScore(circleScore + 1);
             document.body.classList.add("blue_theme");
         }
-        console.log(pieceName)
         setStopGame(true);
     }
 
     function draw() {
-        titleRef.current.innerHTML = "Draw!";
         document.body.classList.add("draw_theme")
         setStopGame(true);
     }
@@ -118,16 +108,9 @@ function TicTacToe() {
         bodyThemes.forEach(theme => bodyThemes.remove(theme));
         
         pieceToStart = pieceToStart === 'x' ? 'o' : 'x';
-        titleRef.current.innerHTML = `${pieceToStart.toUpperCase()} starts!`;
-    }
-
-    function resetScore() {
-        setCircleScore(0);
-        setCrossScore(0);
     }
 
     return ( <section className={classes.tictactoe}>
-        <h2 ref={titleRef}></h2>
         <div className={classes.game}>
             <div className={classes.row}>
                 <div onClick={(e) => {selectSpace(e, 0, 0)}} className={classes.space}></div>
@@ -146,12 +129,7 @@ function TicTacToe() {
             </div>
         </div>
         <div>
-            <button className={classes.reset_game} onClick={() => {resetGame()}}>reset</button>
-            <button className={classes.reset_score} onClick={() => {resetScore()}}>Reset Score</button>
-        </div>
-        <div className={classes.score}>
-            <span className={classes.cross_score} >{crossScore}</span>
-            <span className={classes.circle_score} >{circleScore}</span>
+            <button className="reset_button" onClick={() => {resetGame()}}>reset</button>
         </div>
     </section> );
 }
